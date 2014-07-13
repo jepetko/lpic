@@ -1,0 +1,13 @@
+create lpic postgres user: sudo -u postgres psql
+
+$ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+
+configure smtp: https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/
+
+reconfigure smtp in config/environments/development.rb
+
+  config.action_mailer.smtp_settings = {
+      :port    => 25,
+      :address  => 'localhost',
+      :enable_starttls_auto => false
+  }
