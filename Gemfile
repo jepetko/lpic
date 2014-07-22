@@ -28,6 +28,8 @@ group :development, :test do
   gem 'rspec-core'
   gem 'rspec-rails'
   gem 'rspec-legacy_formatters'
+  gem 'debase'
+  gem 'ruby-debug-ide'
 end
 group :production do
   gem 'thin'
