@@ -24,7 +24,10 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
+  gem 'rspec'
+  gem 'rspec-core'
   gem 'rspec-rails'
+  gem 'rspec-legacy_formatters'
 end
 group :production do
   gem 'thin'

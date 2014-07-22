@@ -20,6 +20,7 @@ feature 'Sign in', :devise do
   #   Then I see a success message
   scenario 'user can sign in with valid credentials' do
     user = FactoryGirl.create(:user)
+    user.confirm!
     signin(user.email, user.password)
     expect(page).to have_content 'Signed in successfully.'
   end
