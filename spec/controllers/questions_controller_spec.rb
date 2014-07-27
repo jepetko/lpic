@@ -20,13 +20,46 @@ describe QuestionsController do
       @u = FactoryGirl.create(:user)
       @u.confirm!
       sign_in :user, @u
+
+      @q = FactoryGirl.create(:question)
     end
 
     describe 'routing' do
       it 'routes to #new' do
         {
-          :get => 'questions/new'
+          :get => '/questions/new'
         }.should route_to(:controller => 'questions', :action => 'new')
+      end
+
+      it 'routes to #create' do
+        q = Question.new :text => 'this is a question'
+        {
+          :post => '/questions'
+        }.should route_to(:controller => 'questions', :action => 'create')
+      end
+
+      it 'routes to #show' do
+        {
+          :get => "/questions/#{@q.id}"
+        }.should route_to(:controller => 'questions', :action => 'show', :id => "#{@q.id}")
+      end
+
+      it 'routes to #index' do
+        {
+          :get => '/questions'
+        }.should route_to(:controller => 'questions', :action => 'index')
+      end
+
+      it 'routes to #update' do
+        {
+          :put => "/questions/#{@q.id}"
+        }.should route_to(:controller => 'questions', :action => 'update', :id => "#{@q.id}")
+      end
+
+      it 'routes to #destroy' do
+        {
+          :delete => "/questions/#{@q.id}"
+        }.should route_to(:controller => 'questions', :action => 'destroy', :id => "#{@q.id}")
       end
 
     end
