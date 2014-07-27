@@ -61,7 +61,14 @@ describe QuestionsController do
           :delete => "/questions/#{@q.id}"
         }.should route_to(:controller => 'questions', :action => 'destroy', :id => "#{@q.id}")
       end
+    end
 
+    describe 'get :new' do
+      it 'is successful' do
+        get :new
+        response.should be_success
+        response.body.should have_xpath("//textarea[@id='question_text']")
+      end
     end
   end
 end
